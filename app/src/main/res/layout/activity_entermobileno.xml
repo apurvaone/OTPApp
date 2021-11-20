@@ -101,7 +101,8 @@
            android:text="Get OTP"
            android:textColor="@color/black"
            android:textStyle="bold"
-           android:background="@color/colorPrimary"
+           android:background="@drawable/background_buttonn"
+           />
 
        
        
