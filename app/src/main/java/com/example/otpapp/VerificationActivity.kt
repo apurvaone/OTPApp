@@ -2,10 +2,15 @@ package com.example.otpapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.text.Editable
+
+
+
 
 class VerificationActivity : AppCompatActivity() {
 
@@ -44,11 +49,100 @@ class VerificationActivity : AppCompatActivity() {
             {
                 Toast.makeText(applicationContext,"Please enter all number",Toast.LENGTH_SHORT).show()
             }
+
         }
+        numberotpmove()
 
 
 
 
+
+
+    }
+
+    private fun numberotpmove() {
+        input1.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if(!p0.toString().trim().isEmpty()){
+                    input2.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        });
+        input2.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if(!p0.toString().trim().isEmpty()){
+                    input3.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        });
+
+        input3.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if(!p0.toString().trim().isEmpty()){
+                    input4.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        });
+
+        input4.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if(!p0.toString().trim().isEmpty()){
+                    input5.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        });
+        input5.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if(!p0.toString().trim().isEmpty()){
+                    input6.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        });
 
 
     }
