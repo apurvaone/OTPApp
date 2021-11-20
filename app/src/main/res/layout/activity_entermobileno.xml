@@ -39,7 +39,7 @@
            android:textColor="@color/colortextsecond"
            android:textSize="14sp"
 
-           android:text="We will send an OTP on this phone number"
+           android:text="@string/info"
            />
        
        
@@ -48,7 +48,50 @@
            android:layout_height="wrap_content"
            android:layout_marginStart="30dp"
            android:layout_marginEnd="30dp"
+           android:layout_marginTop="20dp"
+           android:layout_marginBottom="15dp"
+           android:gravity="center"
+            android:layout_marginRight="30dp"
+           android:text="Enter Moile Number"
+           android:textColor="@color/colortextsecond"
+           android:textSize="14sp"/>
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="60dp"
+           android:layout_marginEnd="60dp"
+           android:gravity="center"
+           android:orientation="horizontal"
+
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="40dp"
+               android:gravity="center"
+               android:text="+91"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               android:textStyle="bold"/>
+           <EditText
+               android:layout_width="wrap_content"
+               android:layout_height="40dp"
+               android:id="@+id/input_mobile_number"
+               android:background="@null"
+               android:hint="9999999999"
+               android:imeOptions="actionDone"
+               android:importantForAutofill="no"
+               android:inputType="number"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               />
+
            
+
+
+       </LinearLayout>
 
        
        

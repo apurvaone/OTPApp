@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OTPApp</string>
+    <string name="info">We will send an OTP on this phone number</string>
 </resources>
