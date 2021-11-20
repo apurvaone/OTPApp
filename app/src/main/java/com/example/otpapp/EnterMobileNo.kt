@@ -30,7 +30,7 @@ class EnterMobileNo : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this,"Please Enter correct number",Toast.LENGTH_LONG)
+                    Toast.makeText(this,"Please Enter correct number",Toast.LENGTH_LONG).show()
                 }
         }
             else
