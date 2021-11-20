@@ -74,37 +74,39 @@
                android:layout_height="40dp"
                android:gravity="center"
                android:text="+91"
-               android:textColor="@color/black"
+               android:textColor="@color/colortextsecond"
                android:textSize="16sp"
                android:textStyle="bold"/>
+
            <EditText
+               android:id="@+id/input_mobile_number"
                android:layout_width="wrap_content"
                android:layout_height="40dp"
-               android:id="@+id/input_mobile_number"
                android:background="@null"
                android:hint="9999999999"
                android:imeOptions="actionDone"
                android:importantForAutofill="no"
                android:inputType="number"
+               android:maxLength="10"
                android:textColor="@color/black"
                android:textSize="16sp"
                android:textStyle="bold"
-               />
+               tools:ignore="TouchTargetSizeCheck" />
 
            
 
 
        </LinearLayout>
-       
+
        <Button
+           android:id="@+id/getotp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_margin="30dp"
+           android:background="@drawable/background_buttonn"
            android:text="Get OTP"
            android:textColor="@color/black"
-           android:textStyle="bold"
-           android:background="@drawable/background_buttonn"
-           />
+           android:textStyle="bold" />
 
        
        
