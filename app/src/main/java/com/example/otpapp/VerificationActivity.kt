@@ -64,9 +64,10 @@ class VerificationActivity : AppCompatActivity() {
                             verifyButton.visibility= View.INVISIBLE
                             if (p0.isSuccessful())
                             {
-                                val intent:Intent= Intent(applicationContext,Dashboard::class.java)
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                val intent:Intent= Intent(this@VerificationActivity,Dashboard::class.java)
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK )
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                startActivity(intent)
 
                             }
                             else
