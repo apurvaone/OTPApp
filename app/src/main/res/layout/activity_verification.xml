@@ -226,7 +226,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:id="@+id/progressbar_sendotp"
+                android:id="@+id/progressbar_verifyotp"
                 android:visibility="gone"/>
         </FrameLayout>
 

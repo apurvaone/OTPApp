@@ -1,18 +1,23 @@
 package com.example.otpapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import android.text.Editable
-
-
+import android.view.View
+import android.widget.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 
 
 class VerificationActivity : AppCompatActivity() {
+    lateinit var otpsent:String
+    lateinit var progressbar: ProgressBar
 
     lateinit var input1:EditText
     lateinit var input2:EditText
@@ -34,6 +39,10 @@ class VerificationActivity : AppCompatActivity() {
         input5= findViewById(R.id.inputOTP5)
         input6= findViewById(R.id.inputOTP6)
         verifyButton= findViewById(R.id.submitButton)
+        progressbar= findViewById(R.id.progressbar_verifyotp)
+
+
+        otpsent= intent.getStringExtra("otpsent")!!
 
         var textView:TextView= findViewById(R.id.textMobileShow)
 
@@ -41,8 +50,35 @@ class VerificationActivity : AppCompatActivity() {
 
 
         verifyButton.setOnClickListener {
+
             if (!input1.text.toString().trim().isEmpty() &&!input2.text.toString().trim().isEmpty() &&!input3.text.toString().trim().isEmpty() &&!input4.text.toString().trim().isEmpty()&& !input5.text.toString().trim().isEmpty()&&!input6.text.toString().trim().isEmpty())
             {
+                var enteredOTP:String= input1.text.toString()+input2.text.toString()+input3.text.toString()+input4.text.toString()+input5.text.toString()+input6.text.toString()
+                var phoneAuthCredential= PhoneAuthProvider.getCredential(otpsent,enteredOTP)
+
+                FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+                    .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
+                        override fun onComplete(p0: Task<AuthResult>) {
+
+                            progressbar.visibility= View.VISIBLE
+                            verifyButton.visibility= View.INVISIBLE
+                            if (p0.isSuccessful())
+                            {
+                                val intent:Intent= Intent(applicationContext,Dashboard::class.java)
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
+                            }
+                            else
+                            {
+                                Toast.makeText(this@VerificationActivity,"Enter the correct otp",Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
+
+
+                    })
+
                 Toast.makeText(applicationContext,"Otp verify",Toast.LENGTH_SHORT).show()
             }
             else
