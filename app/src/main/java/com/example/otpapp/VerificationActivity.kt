@@ -9,10 +9,12 @@ import android.view.View
 import android.widget.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import java.util.concurrent.TimeUnit
 
 
 class VerificationActivity : AppCompatActivity() {
@@ -67,6 +69,7 @@ class VerificationActivity : AppCompatActivity() {
                                 val intent:Intent= Intent(this@VerificationActivity,Dashboard::class.java)
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK )
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
                                 startActivity(intent)
 
                             }
@@ -89,6 +92,41 @@ class VerificationActivity : AppCompatActivity() {
 
         }
         numberotpmove()
+
+        findViewById<TextView>(R.id.resend_otp).setOnClickListener {
+
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91"+ intent.getStringExtra("mobile"),
+                60,
+                TimeUnit.SECONDS,
+                this,object :PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+                    override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+
+
+                    }
+
+                    override fun onVerificationFailed(p0: FirebaseException) {
+
+                        Toast.makeText(this@VerificationActivity,p0.message,Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    override fun onCodeSent(
+                        newotpsent: String,
+                        p1: PhoneAuthProvider.ForceResendingToken
+                    ) {
+                        otpsent=newotpsent
+                        Toast.makeText(this@VerificationActivity,"New otp sent",Toast.LENGTH_SHORT).show()
+
+                    }
+
+
+                }
+            );
+        }
+
+
+
 
 
 
